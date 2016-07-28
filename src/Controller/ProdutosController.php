@@ -88,6 +88,19 @@ class ProdutosController extends AppController
         $this->set(compact('produto'));
         $this->set('_serialize', ['produto']);
     }
+    
+    public function ativarprod($id = null)
+    {
+    	if ($this->request->is('post')) {
+    		$produto = $this->Produtos->get($id);
+    		$ativo = $this->Produtos->read('ativo', $id);
+    	
+    			
+    			
+    	}
+    	
+        return $this->redirect(['action' => 'index/']);
+    }
 
     /**
      * Delete method

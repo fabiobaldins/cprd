@@ -52,10 +52,27 @@ function newprd()
 		window.location.href='./produtos/add/' ;
 	}
 
-function ativacao(valor,id)
+function ativaprod(id)
 	{
-		alert(valor);
-		alert(id);
+		$.ajax({
+		    url : "./produtos/ativarprod/"+id,
+	
+		    
+		    beforeSend: function(jqXHR) {
+		        jqXHR.overrideMimeType('text/html;charset=iso-8859-1');
+		    },
+		    
+		    type: "POST",
+		    
+		    data: {
+		    	id:id
+		    },
+		    
+		    success: function(data)
+		    {
+		        //window.location.href='./produtos/';
+		    }
+		  }); 
 	}
 
 function editprod()

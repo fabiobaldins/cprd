@@ -1,7 +1,6 @@
 <div class="produtos index large-9 medium-8 columns content">
     <h3><?= __('Produtos') ?></h3>
-    <?=$this->Html->link("Novo", array('controller' => 'produtos','action'=> 'add', $possibleParameter), array( 'class' => 'button'))?>
-    <?=$this->Form->button('NovoII', array('type' => 'button', 'onclick' => 'newprd();'));?>
+    <?=$this->Form->button('Novo', array('type' => 'button', 'onclick' => 'newprd();'));?>
     <?=$this->Form->button('Editar', array('type' => 'button', 'onclick' => 'editprod();'));?>
     <?=$this->Form->button('Excluir', array('type' => 'button', 'onclick' => 'delprd();'));?>
     
@@ -20,13 +19,17 @@
         </thead>
         <tbody>
             <?php foreach ($produtos as $produto): ?>
+            <script>
+            	var idprodutos = <?=$produto->id?>;
+            </script>
+            
             <tr>
             	<td><?= $this->Form->input('produtos[]', ['type' => 'checkbox', 'label'=>false, 'value'=>$produto->id]); ?></th>
                 <td><?= $this->Number->format($produto->id) ?></td>
                 <td><?= h($produto->descricao) ?></td>
                 <td><?= $this->Number->format($produto->saldo) ?></td>
                 <td><?= $this->Number->format($produto->preco) ?></td>
-                <td><?= $this->Form->input('ativos[]', ['type' => 'checkbox', 'label'=>false, 'onclick'=>'ativacao(this.checked,this.value);']); ?></td>
+                <td><?= $this->Form->input('ativos[]', ['type' => 'checkbox', 'label'=>false, 'onclick'=>'ativaprod(idprodutos);']); ?></td>
                 
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $produto->id]) ?>
