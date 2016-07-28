@@ -23,13 +23,20 @@
             	var idprodutos = <?=$produto->id?>;
             </script>
             
+            <?php
+            	if($produto->ativo=='1')
+            	{$checkativo = true;}
+            	else
+            	{$checkativo = false;}
+            ?>
+            
             <tr>
             	<td><?= $this->Form->input('produtos[]', ['type' => 'checkbox', 'label'=>false, 'value'=>$produto->id]); ?></th>
                 <td><?= $this->Number->format($produto->id) ?></td>
                 <td><?= h($produto->descricao) ?></td>
                 <td><?= $this->Number->format($produto->saldo) ?></td>
                 <td><?= $this->Number->format($produto->preco) ?></td>
-                <td><?= $this->Form->input('ativos[]', ['type' => 'checkbox', 'label'=>false, 'onclick'=>'ativaprod(idprodutos);']); ?></td>
+                <td><?= $this->Form->input('ativos[]', ['type' => 'checkbox', 'label'=>false, 'checked'=>$checkativo ,'onclick'=>'ativaprod(idprodutos);']); ?></td>
                 
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $produto->id]) ?>
@@ -49,3 +56,16 @@
         <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
+
+<a href="#janela1" rel="modal">Janela modal</a>
+ 
+<div class="window" id="janela1">
+    <a href="#" class="fechamod">X Fechar</a>
+    <h4>Primeira janela moda</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis auctor tempus. Lorem ipsum dolor sit amet,</p>
+    <p>Morbi dui lacus, placerat eget pretium vehicula, mollis id ligula. Nulla facilisi. </p>
+</div>
+ 
+ 
+<!-- mascara para cobrir o site -->  
+<div id="mascara"></div>

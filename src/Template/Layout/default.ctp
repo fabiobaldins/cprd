@@ -14,6 +14,7 @@ $system_name = 'Areco - Cadastro de Produtos';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('custom.css') ?>
     <?= $this->Html->css('jquery-ui.min') ?>
 
     <?= $this->fetch('meta') ?>

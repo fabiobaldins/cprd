@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Datasource\ConnectionManager;
 /**
  * Produtos Controller
  *
@@ -91,15 +91,12 @@ class ProdutosController extends AppController
     
     public function ativarprod($id = null)
     {
-    	if ($this->request->is('post')) {
-    		$produto = $this->Produtos->get($id);
-    		$ativo = $this->Produtos->read('ativo', $id);
-    	
-    			
-    			
-    	}
-    	
-        return $this->redirect(['action' => 'index/']);
+    	$this->Produtos->get($id, [
+            'contain' => []
+        ]);
+		
+		$this->Produtos->updateAll(['ativo' => '0'], ['id' => 15]);
+		
     }
 
     /**
