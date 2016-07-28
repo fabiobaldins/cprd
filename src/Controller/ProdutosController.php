@@ -48,7 +48,7 @@ class ProdutosController extends AppController
      */
     public function add()
     {
-        /*$produto = $this->Produtos->newEntity();
+        $produto = $this->Produtos->newEntity();
         if ($this->request->is('post')) {
             $produto = $this->Produtos->patchEntity($produto, $this->request->data);
             if ($this->Produtos->save($produto)) {
@@ -60,17 +60,7 @@ class ProdutosController extends AppController
             }
         }
         $this->set(compact('produto'));
-        $this->set('_serialize', ['produto']);*/
-    	
-    	$produto = $this->Produtos->newEntity();
-        $this->set('saved', false); //false by default - controls closure of overlay in which this is opened
-        if (!empty($this->request->data)) {
-        	$this->Produtos->create();
-        	if ($this->Produtos->save($this->request->data)){
-        		$this->set('saved', true); //only set true if data saves OK
-        	}
-        }
-        
+        $this->set('_serialize', ['produto']);
     }
 
     /**

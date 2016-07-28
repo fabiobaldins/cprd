@@ -1,28 +1,8 @@
-<script>
-function delprd()
-{
-	var arrsel = [];
-	var arrprodutos = document.getElementsByName('produtos[]');
-	
-	for(i=0; i<arrprodutos.length;i++)
-		{
-            if((arrprodutos[i].checked == true)&&(arrprodutos[i].value!=0))
-            	{
-            		if(confirm('Deseja realmente excluir o "Produto"'+arrprodutos[i].value))
-            		{
-            			var idprod = arrprodutos[i].value;
-            			  
-            			window.location.href='<?= $this->Url->build(["controller" => "Produtos","action" => "delete","$idprodjs"]); ?>' ;
-            		}	
-            	}
-        }
-}
-</script>
 <div class="produtos index large-9 medium-8 columns content">
     <h3><?= __('Produtos') ?></h3>
     <?=$this->Html->link("Novo", array('controller' => 'produtos','action'=> 'add', $possibleParameter), array( 'class' => 'button'))?>
     <?=$this->Form->button('NovoII', array('type' => 'button', 'onclick' => 'newprd();'));?>
-    <?=$this->Html->link("Editar", array('controller' => 'produtos','action'=> 'edit', $possibleParameter), array( 'class' => 'button'))?>
+    <?=$this->Form->button('Editar', array('type' => 'button', 'onclick' => 'editprod();'));?>
     <?=$this->Form->button('Excluir', array('type' => 'button', 'onclick' => 'delprd();'));?>
     
     <table cellpadding="0" cellspacing="0">

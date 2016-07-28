@@ -8,9 +8,48 @@ function checkall(checkok)
         }
 }
 
+function delprd()
+{
+	var arrsel = [];
+	var arrprodutos = document.getElementsByName('produtos[]');
+	
+	for(i=0; i<arrprodutos.length;i++)
+		{
+            if((arrprodutos[i].checked == true)&&(arrprodutos[i].value!=0))
+            	{
+            		if(confirm('Deseja realmente excluir o "Produto"'+arrprodutos[i].value))
+            		{
+            			var idprod = arrprodutos[i].value;
+            			   
+            			$.ajax({
+							    url : "./produtos/delete/"+idprod,
+						
+							    
+							    beforeSend: function(jqXHR) {
+							        jqXHR.overrideMimeType('text/html;charset=iso-8859-1');
+							    },
+							    
+							    type: "POST",
+							    
+							    data: {
+							    	id:idprod
+							    },
+							    
+							    success: function(data)
+							    {
+							        //window.location.href='./produtos/';
+							    }
+							  });   
+            			   
+            			
+            		}	
+            	}
+        }
+}
+
 function newprd()
 	{
-	 alert('teste');
+		window.location.href='./produtos/add/' ;
 	}
 
 function ativacao(valor,id)
@@ -19,3 +58,17 @@ function ativacao(valor,id)
 		alert(id);
 	}
 
+function editprod()
+	{
+	var arrsel = [];
+	var arrprodutos = document.getElementsByName('produtos[]');
+	
+	for(i=0; i<arrprodutos.length;i++)
+		{
+            if((arrprodutos[i].checked == true)&&(arrprodutos[i].value!=0))
+            	{
+            			var idprod = arrprodutos[i].value;
+            			window.location.href='./produtos/edit/'+idprod ;
+            	}
+        }
+	}
