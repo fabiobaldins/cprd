@@ -37,7 +37,7 @@ function delprd()
 							    
 							    success: function(data)
 							    {
-							        //window.location.href='./produtos/';
+							        window.location.href='./produtos/';
 							    }
 							  });   
             			   
@@ -49,26 +49,7 @@ function delprd()
 
 function newprd()
 	{
-		//window.location.href='./produtos/add/' ;
-		$.ajax({
-		    url : "./produtos/add/",
-	
-		    
-		    beforeSend: function(jqXHR) {
-		        jqXHR.overrideMimeType('text/html;charset=iso-8859-1');
-		    },
-		    
-		    type: "POST",
-		    
-		    data: {
-		    	id:0
-		    },
-		    
-		    success: function(data)
-		    {
-		        alert(data);//window.location.href='./produtos/';
-		    }
-		  }); 
+		window.location.href='./produtos/add/' ;
 	}
 
 
@@ -91,45 +72,24 @@ function ativaprod(id)
 		    
 		    success: function(data)
 		    {
-		        $('#janela1').innerHTML(data);//window.location.href='./produtos/';
+		        window.location.href='./produtos/';
 		    }
 		  }); 
 	}
 
 function editprod()
 	{
-	var arrsel = [];
-	var arrprodutos = document.getElementsByName('produtos[]');
-	
-	for(i=0; i<arrprodutos.length;i++)
-		{
-            if((arrprodutos[i].checked == true)&&(arrprodutos[i].value!=0))
-            	{
-            			var idprod = arrprodutos[i].value;
-            			
-            			$.ajax({
-            			    url : "./produtos/edit/"+idprod,
-            		
-            			    
-            			    beforeSend: function(jqXHR) {
-            			        jqXHR.overrideMimeType('text/html;charset=iso-8859-1');
-            			    },
-            			    
-            			    type: "POST",
-            			    
-            			    data: {
-            			    	id:idprod
-            			    },
-            			    
-            			    success: function(data)
-            			    {
-            			    	alert(data);
-            			    	$("#janela1").html(data);
-
-            			    }
-            			  }); 
-            	}
-        }
+		var arrsel = [];
+		var arrprodutos = document.getElementsByName('produtos[]');
+		
+		for(i=0; i<arrprodutos.length;i++)
+			{
+	            if((arrprodutos[i].checked == true)&&(arrprodutos[i].value!=0))
+	            	{
+	            		var idprod = arrprodutos[i].value;
+	            		window.location.href='./produtos/edit/'+idprod;
+	            	}
+			}
 	}
 
 $(document).ready(function(){
