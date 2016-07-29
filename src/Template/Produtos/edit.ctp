@@ -1,8 +1,7 @@
-
 <div>
     <?= $this->Form->create($produto) ?>
     <fieldset>
-        <legend><?= __('Edit Produto') ?></legend>
+        <legend>Editar Produto</legend>
         <?php
             echo $this->Form->input('descricao');
             echo $this->Form->input('saldo');

@@ -87,7 +87,7 @@ function editprod()
 	            if((arrprodutos[i].checked == true)&&(arrprodutos[i].value!=0))
 	            	{
 	            		var idprod = arrprodutos[i].value;
-	            		window.location.href='./produtos/edit/'+idprod;
+	            		window.location.href='./edit/'+idprod;
 	            	}
 			}
 	}
